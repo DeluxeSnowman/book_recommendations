@@ -1,0 +1,109 @@
+Book Recommendation Website
+
+Welcome to the Book Recommendation Website! This project allows users to enter a genre and receive a random book recommendation from a curated database of books. Follow the steps below to set up and use the project.
+
+Requirements
+To run this project, you need:
+
+Python 3.8 or later
+A web browser (e.g., Chrome, Firefox)
+Internet access for fetching books from the Google Books API
+A command-line terminal (e.g., Command Prompt, Terminal)
+
+Setup Instructions
+1. Extract Files
+Download the .zip folder and extract it to a directory of your choice.
+The folder structure should look like this:
+
+project-directory/
+│
+├── books.db              # SQLite database (created after running fetch script)
+├── fetch_books.py        # Script to populate the database
+├── app.py                # Flask backend for the website
+├── static/
+│   ├── index.html        # Frontend HTML
+│   ├── style.css         # Website styles
+│   ├── script.js         # Website JavaScript
+├── README.md             # This file
+
+2. Install Dependencies
+Open a terminal in the project directory.
+
+Create a virtual environment (optional but recommended):
+
+bash
+Copy code
+python -m venv venv
+Activate the environment:
+
+Windows: .\venv\Scripts\activate
+Mac/Linux: source venv/bin/activate
+Install the required Python libraries:
+
+bash
+Copy code
+pip install -r requirements.txt
+(If a requirements.txt file is not provided, you can manually install Flask, requests, and Flask-CORS.)
+
+bash
+Copy code
+pip install flask requests flask-cors
+3. Prepare the Book Database
+Run the fetch_books.py script to populate the books.db database with books from the Google Books API:
+bash
+Copy code
+python fetch_books.py
+The script will fetch books by genre and insert them into the books.db file. This process may take some time depending on the number of genres and books.
+4. Start the Backend
+Run the Flask backend to serve the website:
+bash
+Copy code
+python app.py
+You should see a message indicating that the Flask server is running on http://127.0.0.1:5000.
+5. View the Website
+Open a web browser and go to:
+arduino
+Copy code
+http://127.0.0.1:5000
+The homepage will load, and you can start using the website.
+Using the Website
+Enter a genre: Type a book genre into the input box (e.g., "fantasy", "romance").
+Get a recommendation: Click the "Get Recommendation" button to receive a random book from the genre.
+Explore genres: Try different genres and discover new books!
+Dynamic backgrounds: The background changes to match the entered genre (if configured).
+Customization Options
+Background Images: Add genre-specific images by modifying the script.js file:
+
+javascript
+Copy code
+const genreBackgrounds = {
+    fantasy: "url('/static/images/fantasy.jpg')",
+    romance: "url('/static/images/romance.jpg')",
+    // Add more genres and paths here
+};
+Save images in the static/images directory.
+
+Book Genres: Modify the list of genres in the fetch_books.py script:
+
+python
+Copy code
+genres = ['fantasy', 'romance', 'thriller', 'sci-fi', 'mystery']
+Style and Layout: Edit style.css to change the look and feel of the website.
+
+Troubleshooting
+
+Database Errors:
+If the books.db file is missing or corrupt, re-run the fetch_books.py script.
+
+Flask Server Not Starting:
+Ensure all dependencies are installed and the correct Python environment is active.
+
+No Book Found:
+If a genre has no results, try fetching books again or checking the spelling of the genre.
+
+API Rate Limits: 
+If the Google Books API limit is exceeded, wait a while before running the fetch_books.py script again.
+
+License
+This project is provided as-is for educational purposes. Feel free to modify and use it for non-commercial projects. 🌟
+
